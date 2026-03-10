@@ -14,8 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        # This tells GitHub to look inside your subfolder for npm commands
-        working-directory: Ramadan-App-2026 
+        working-directory: Ramadan-App-2026
 
     steps:
       - name: Checkout
@@ -25,9 +24,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          # Path to lock file for caching
-          cache-dependency-path: Ramadan-App-2026/package-lock.json
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm install
@@ -38,7 +36,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # This points to the dist folder inside the subfolder
           path: Ramadan-App-2026/dist/
 
   deploy:
